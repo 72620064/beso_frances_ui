@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class BesoFrances extends StatelessWidget {
-  const BesoFrances({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   Widget producto({required String imgUrl, required String nombre, required int precio}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +46,7 @@ class BesoFrances extends StatelessWidget {
           textAlign: TextAlign.center,      
         ),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -84,18 +87,28 @@ class BesoFrances extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 150, vertical: 20),
               child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFE80057),
-                    borderRadius: BorderRadius.circular(8),
+                padding: EdgeInsets.symmetric(vertical: 14),
+                decoration: BoxDecoration(
+                  color: Color(0xFFE80057),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  onPressed: () => context.go('/p1'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFE80057),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
                   ),
-                  alignment: Alignment.center,
+
                   child: Text(
-                    "Comprar",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
+                          "Comprar",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),                      
+                ),
               ),
             ),
+            
 
             SizedBox(height: 25),
 
