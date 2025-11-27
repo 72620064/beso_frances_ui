@@ -4,35 +4,48 @@ import 'package:go_router/go_router.dart';
 class BesoMenu extends StatelessWidget {
   const BesoMenu({super.key});
 
-  Widget producto({required String imgUrl, required String nombre, required int precio}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 140,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.grey[300],
-            image: DecorationImage(
-              image: NetworkImage(imgUrl),
-              fit: BoxFit.cover,
+  Widget producto({
+  required BuildContext context,
+  required String imgUrl,
+  required String nombre,
+  required int precio,
+}) {
+  return Material(
+    color: Colors.transparent,
+    child: InkWell(
+      onTap: () => context.go('/p2'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 140,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.grey[300],
+              image: DecorationImage(
+                image: NetworkImage(imgUrl),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 8),
-        Text(
-          nombre,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 4),
-        Text(
-          "Desde S/ $precio",
-          style: TextStyle(fontSize: 13, color: Colors.grey[700]),
-        ),
-      ],
-    );
-  }
+          SizedBox(height: 8),
+          Text(
+            nombre,
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(height: 4),
+          Text(
+            "Desde S/ $precio",
+            style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,37 +128,49 @@ class BesoMenu extends StatelessWidget {
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: GridView.count(
+              child: GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                children: [
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5701_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752034297",
-                    nombre: "Crepe con base de miel de abeja",
-                    precio: 15,
-                  ),
+                itemCount: 4,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,          // 2 columnas
+                  mainAxisSpacing: 20,        // Espacio vertical
+                  crossAxisSpacing: 20,       // Espacio horizontal
+                  childAspectRatio: 0.8,      // Relación ancho/alto
+                ),
+                itemBuilder: (context, index) {
+                  final productos = [
+                    {
+                      "img": "https://besofrances.com/cdn/shop/files/5701_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752034297",
+                      "nombre": "Crepe con base de miel de abeja",
+                      "precio": 15,
+                    },
+                    {
+                      "img": "https://besofrances.com/cdn/shop/files/5649_-_Helado_Artchocolate_Brownie_Beso_Platano_300x.jpg?v=1752421764",
+                      "nombre": "Crepe con base de fudge",
+                      "precio": 15,
+                    },
+                    {
+                      "img": "https://besofrances.com/cdn/shop/files/5662_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752421824",
+                      "nombre": "Crepe con base de manjar",
+                      "precio": 15,
+                    },
+                    {
+                      "img": "https://besofrances.com/cdn/shop/files/5681_-_Helado_Artvainilla_Brownie_Beso_Platano_300x.jpg?v=1752421900",
+                      "nombre": "Crepe con base de mermelada de fresa",
+                      "precio": 15,
+                    },
+                  ];
 
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5649_-_Helado_Artchocolate_Brownie_Beso_Platano_300x.jpg?v=1752421764",
-                    nombre: "Crepe con base de fudge",
-                    precio: 15,
-                  ),
+                  final p = productos[index];
 
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5662_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752421824",
-                    nombre: "Crepe con base de manjar",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5681_-_Helado_Artvainilla_Brownie_Beso_Platano_300x.jpg?v=1752421900",
-                    nombre: "Crepe con base de mermelada de fresa",
-                    precio: 15,
-                  ),
-                ],
+                  return producto(
+                    context: context,
+                    imgUrl: p["img"] as String,
+                    nombre: p["nombre"] as String,
+                    precio: p["precio"] as int,
+                  );
+                },
               ),
             ),
           ],

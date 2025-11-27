@@ -4,20 +4,6 @@ import 'package:go_router/go_router.dart';
 class DescripcionProductos extends StatelessWidget {
   const DescripcionProductos({super.key});
 
-  Widget boton(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Home")),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            context.go('/p1');  // Navega a BesoMenu
-          },
-          child: Text("Ir a P1"),
-        ),
-      ),
-    );
-  }
-
   Widget producto({required String imgUrl, required String nombre, required int precio}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,6 +46,7 @@ class DescripcionProductos extends StatelessWidget {
           textAlign: TextAlign.center,      
         ),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -100,18 +87,28 @@ class DescripcionProductos extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 150, vertical: 20),
               child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFE80057),
-                    borderRadius: BorderRadius.circular(8),
+                padding: EdgeInsets.symmetric(vertical: 14),
+                decoration: BoxDecoration(
+                  color: Color(0xFFE80057),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  onPressed: () => context.go('/p1'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFE80057),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
                   ),
-                  alignment: Alignment.center,
+
                   child: Text(
-                    "Comprar",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
+                          "Comprar",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),                      
+                ),
               ),
             ),
+            
 
             SizedBox(height: 25),
 
