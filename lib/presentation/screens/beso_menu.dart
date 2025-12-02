@@ -81,29 +81,46 @@ class BesoMenu extends StatelessWidget {
                   ]
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20,),
+              child: Text(
+                "Crepes dulces",
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w800,
+                  color: Color.fromARGB(255, 16, 25, 74),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 150, vertical: 20),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 14),
-                decoration: BoxDecoration(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20,),
+              child: Text(
+                "Atención entrega: Lunes a Domingo de"
+                "\n8:00 am a 10:00pm (varía según"
+                "\ndispomibilidad de la tienda)"
+                "\n \n Tu BesoPedido llegará en 45 minutos"
+                "\naprox. después de confirmar tu orden",
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w800,
                   color: Color(0xFFE80057),
-                  borderRadius: BorderRadius.circular(8),
                 ),
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () => context.go('/'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFE80057),
-                    foregroundColor: Colors.white,
-                    elevation: 0,
-                  ),
+                textAlign: TextAlign.center,
+              ),
+            ),
 
-                  child: Text(
-                          "Regresar",
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),                      
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20,),
+              child: Text(
+                "Besos dulces que son inolvidables. ¡Disfruta!",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF1B2A7A),
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
             

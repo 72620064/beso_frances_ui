@@ -10,7 +10,7 @@ class CarritoCompras extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            context.go('/p1');  // Navega a BesoMenu
+            context.go('/p2');  // Navega a BesoMenu
           },
           child: Text("Ir a P1"),
         ),
@@ -106,10 +106,21 @@ class CarritoCompras extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   alignment: Alignment.center,
-                  child: Text(
-                    "Comprar",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  
+                  
+                  child: ElevatedButton(
+                  onPressed: () => context.go('/p4'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFE80057),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
                   ),
+
+                  child: Text(
+                          "P3",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),                      
+                ),
               ),
             ),
 

@@ -4,190 +4,120 @@ import 'package:go_router/go_router.dart';
 class DescripcionProductos extends StatelessWidget {
   const DescripcionProductos({super.key});
 
-  Widget producto({required String imgUrl, required String nombre, required int precio}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 140,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.grey[300],
-            image: DecorationImage(
-              image: NetworkImage(imgUrl),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        SizedBox(height: 8),
-        Text(
-          nombre,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 4),
-        Text(
-          "Desde S/ $precio",
-          style: TextStyle(fontSize: 13, color: Colors.grey[700]),
-        ),
-      ],
-    );
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFE80057),
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'Recoge tu pedido gratis en nuestras tiendas y déjate envolver por el romance',
-          style: TextStyle(fontSize: 13, color: Colors.white),
-          textAlign: TextAlign.center,      
-        ),
-      ),
+      backgroundColor: Colors.white,
 
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.all(8.0),
+
+            // ---- TOP BAR ----
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(Icons.menu, size: 28, color: Color(0xFFE80057)),
-              
-                    Container(
-                      width: 150,
-                      child: Image.network(
-                        "https://besofrances.com/cdn/shop/files/logo-besofrances_150x.jpg?v=1624650053",
-                      ),
+                children: [
+                  Icon(Icons.menu, size: 28, color: Color(0xFFE80057)),
+
+                  SizedBox(
+                    width: 150,
+                    child: Image.network(
+                      "https://besofrances.com/cdn/shop/files/logo-besofrances_150x.jpg?v=1624650053",
+                      fit: BoxFit.contain,
                     ),
-              
-                    Icon(Icons.shopping_cart_outlined, size: 28, color: Color(0xFFE80057)),
-                  ]
+                  ),
+
+                  Icon(Icons.shopping_cart_outlined,
+                      size: 28, color: Color(0xFFE80057)),
+                ],
               ),
             ),
 
+            // ---- PRODUCT IMAGE ----
             Container(
               width: double.infinity,
-              height: 420,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage("https://besofrances.com/cdn/shop/files/BANNER-WEB_21_900x.jpg?v=1753633849"),              
-                  fit: BoxFit.cover,
-                  alignment: AlignmentGeometry.bottomRight
-                ),
+              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              height: 400,
+              child: Image.network(
+                "https://besofrances.com/cdn/shop/files/5649_-_Helado_Artchocolate_Brownie_Beso_Platano_300x.jpg?v=1752421764",
+                fit: BoxFit.cover,
               ),
             ),
 
-            SizedBox(height: 15),
+            const SizedBox(height: 20),
 
+            // ---- PRODUCT TITLE ----
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 150, vertical: 20),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 14),
-                decoration: BoxDecoration(
-                  color: Color(0xFFE80057),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () => context.go('/p1'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFE80057),
-                    foregroundColor: Colors.white,
-                    elevation: 0,
-                  ),
-
-                  child: Text(
-                          "Comprar",
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),                      
-                ),
-              ),
-            ),
-            
-
-            SizedBox(height: 25),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                "Compra online en Beso Francés con envío a domicilio o recoge en tienda",
+                "Crepe con base de fudge",
                 style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.w800,
-                  color: Color.fromARGB(255, 16, 25, 74),
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1B2A7A),
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
 
-            SizedBox(height: 60),
+            const SizedBox(height: 16),
 
-            Container(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Beso Menú",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1B2A7A),
-                    ),
-                  ),
-
-                  Icon(Icons.arrow_forward_ios, size: 18, color: Color(0xFF1B2A7A)),
-                ],
-              ),
-            ),
-
+            // ---- DESCRIPTION ----
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: GridView.count(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                children: [
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5701_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752034297",
-                    nombre: "Crepe con base de miel de abeja",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5649_-_Helado_Artchocolate_Brownie_Beso_Platano_300x.jpg?v=1752421764",
-                    nombre: "Crepe con base de fudge",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5662_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752421824",
-                    nombre: "Crepe con base de manjar",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5681_-_Helado_Artvainilla_Brownie_Beso_Platano_300x.jpg?v=1752421900",
-                    nombre: "Crepe con base de mermelada de fresa",
-                    precio: 15,
-                  ),
-                ],
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "El precio de este producto incluye únicamente el "
+                "Crepe relleno con fudge. Los toppings mostrados en la imagen "
+                "son referenciales y tienen un costo adicional.",
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w500,
+                  height: 1.4,
+                  color: Color(0xFF1B2A7A),
+                ),
               ),
             ),
+
+            const SizedBox(height: 40),
+
+            // ---- Botón Realizar pedido ----
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  backgroundColor: Colors.teal),
+                  onPressed: () => context.go('/p4'),
+              child: const Text(
+                "Realice su pedido",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // ---- Botón Continuar ----
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                side: const BorderSide(color: Colors.teal),
+              ),
+              onPressed: () => {},
+              child: const Text(
+                "Continuar comprando",
+                style: TextStyle(fontSize: 18, color: Colors.teal),
+              ),
+            ),
+          ),
           ],
-        )
-        
-        
+        ),
       ),
-      
-      
+  
     );
   }
 }

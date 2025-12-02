@@ -4,35 +4,6 @@ import 'package:go_router/go_router.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  Widget producto({required String imgUrl, required String nombre, required int precio}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 140,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.grey[300],
-            image: DecorationImage(
-              image: NetworkImage(imgUrl),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        SizedBox(height: 8),
-        Text(
-          nombre,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 4),
-        Text(
-          "Desde S/ $precio",
-          style: TextStyle(fontSize: 13, color: Colors.grey[700]),
-        ),
-      ],
-    );
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,60 +98,6 @@ class HomePage extends StatelessWidget {
 
             SizedBox(height: 60),
 
-            Container(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Beso Menú",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1B2A7A),
-                    ),
-                  ),
-
-                  Icon(Icons.arrow_forward_ios, size: 18, color: Color(0xFF1B2A7A)),
-                ],
-              ),
-            ),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: GridView.count(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                children: [
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5701_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752034297",
-                    nombre: "Crepe con base de miel de abeja",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5649_-_Helado_Artchocolate_Brownie_Beso_Platano_300x.jpg?v=1752421764",
-                    nombre: "Crepe con base de fudge",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5662_-_Helado_Artfresa_Brownie_Beso_Fresas_300x.jpg?v=1752421824",
-                    nombre: "Crepe con base de manjar",
-                    precio: 15,
-                  ),
-
-                  producto(
-                    imgUrl: "https://besofrances.com/cdn/shop/files/5681_-_Helado_Artvainilla_Brownie_Beso_Platano_300x.jpg?v=1752421900",
-                    nombre: "Crepe con base de mermelada de fresa",
-                    precio: 15,
-                  ),
-                ],
-              ),
-            ),
           ],
         )
         
